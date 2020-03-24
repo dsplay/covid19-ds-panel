@@ -4,14 +4,9 @@ import { useInterval } from '../util/use-interval';
 import { loadSeries } from '../util/series';
 import { useTranslation } from 'react-i18next';
 
-// const URL = './timeseries.json';
-
-
 const url = new URL(window.location.href);
 
-function MainPanel({
-
-}) {
+function MainPanel() {
 
   const { t } = useTranslation();
 
@@ -26,7 +21,6 @@ function MainPanel({
       const url = new URL(window.location.href);
       const routeCountries = url.searchParams.get('countries');
       const routeDuration = url.searchParams.get('duration');
-      // console.log(routeCountries);
 
       if (routeCountries) {
         const valid = [
@@ -43,15 +37,10 @@ function MainPanel({
   }, [series]);
 
   useEffect(() => {
-
     (async () => {
-
       const seriesData = await loadSeries();
-
       setSeries(seriesData);
-      // console.log(seriesData);
       setLoading(false);
-
     })();
   }, []);
 

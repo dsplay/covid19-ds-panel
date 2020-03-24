@@ -13,7 +13,6 @@ function CountriesChart({
   const xInterval = Math.ceil(data[0].data.length / maxItemsX);
 
   const factor = useMemo(() => {
-
     let result;
 
     switch (screenFormat) {
@@ -29,7 +28,7 @@ function CountriesChart({
     }
 
     return result;
-  }, [screenFormat, w, h]);
+  }, []);
 
   const theme = useMemo(() => {
     return {
@@ -45,27 +44,15 @@ function CountriesChart({
     };
   }, [factor]);
 
-  // return (
-  //   <div className="countries-chart">ok</div>
-  // );
-
-  // if (!height) return null;
-
   return (
     <div className="countries-chart">
       <ResponsiveLine
         data={data}
         theme={theme}
         animate={true}
-        // width={width - 20}
-        // height={height - 20}
         margin={{ top: 50 * factor, right: 60 * factor, bottom: 54 * factor, left: 80 * factor }}
-        xScale={{ type: 'point' }}
-        yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
         curve="monotoneX"
-        // useMesh={true}
         lineWidth={6}
-        // enablePointLabel={true}
         xScale={{
           type: 'time',
           format: '%Y-%m-%d',
@@ -98,7 +85,7 @@ function CountriesChart({
           from: 'color',
           modifiers: [['darker', 0.3]],
         }}
-        layers={['axes', 'mesh', 'areas', 'grid', 'lines']}
+        layers={['axes', 'mesh', 'grid', 'lines']}
       />
     </div>
   );

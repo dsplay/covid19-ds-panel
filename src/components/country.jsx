@@ -59,26 +59,26 @@ function Country({
     <div className="country row full-height">
       <div className="title">
         {country !== GLOBAL && <span className="country-title">{countries[country] ? countries[country].flag : '🇧🇱'} {country}</span>}
-        {country === GLOBAL && <span className="country-title">🌎 {t(GLOBAL)}</span>}
+        {country === GLOBAL && <span className="country-title"><span role="img" aria-label={t(GLOBAL)}>🌎</span> {t(GLOBAL)}</span>}
         <span className="covid">COVID-19</span>
       </div>
 
       <div className="detail">
         <div className="country-summary">
           <div className="row new">
-            <div className="label">🔥 {t('New Cases')} 🤧</div>
+            <div className="label"><span role="img" aria-label={t('New Cases')}>🔥</span> {t('New Cases')} <span role="img" aria-label={t('New Cases')}>🤧</span></div>
             <div className="value">{newCases}</div>
           </div>
           <div className="row confirmed">
-            <div className="label">🤒 {t('Confirmed Cases')} 😷</div>
+            <div className="label"><span role="img" aria-label={t('Confirmed Cases')}>🤒</span> {t('Confirmed Cases')} <span role="img" aria-label={t('Confirmed Cases')}>😷</span></div>
             <div className="value">{confirmed}</div>
           </div>
           <div className="row deaths">
-            <div className="label">😢 {t('Deaths')} 😞</div>
+            <div className="label"><span role="img" aria-label={t('Deaths')}>😢</span> {t('Deaths')} <span role="img" aria-label={t('Deaths')}>😞</span></div>
             <div className="value">{deaths}</div>
           </div>
           <div className="row recovered">
-            <div className="label">🕺 {t('Recovered')} 💃 </div>
+            <div className="label"><span role="img" aria-label={t('Recovered')}>🕺</span> {t('Recovered')} <span role="img" aria-label={t('Recovered')}>💃</span> </div>
             <div className="value">{recovered}</div>
           </div>
         </div>

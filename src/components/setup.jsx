@@ -20,7 +20,7 @@ function CountryOption({
       <input id={id} type="checkbox" onChange={onSelect} checked={selected.includes(country)} />
       <label htmlFor={id}>
         {country !== GLOBAL && <span className="country-title">{countries[country] ? countries[country].flag : '🇧🇱'} {country}</span>}
-        {country === GLOBAL && <span className="country-title">🌎 {t(GLOBAL)}</span>}
+        {country === GLOBAL && <span className="country-title"><span role="img" aria-label={GLOBAL}>🌎</span> {t(GLOBAL)}</span>}
       </label>
     </div>
   );
@@ -117,7 +117,7 @@ function Setup() {
       <div className="line-bg" />
       <header>
         <a href="https://dsplay-tv">
-          <img src={logo} style={{ height: 70 }} />
+          <img alt="DSPLAY - Digtal Signage" src={logo} style={{ height: 70 }} />
         </a>
          <div> COVID-19<br/>{t('Panel Setup')}</div>
       </header>

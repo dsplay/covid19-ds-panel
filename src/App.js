@@ -1,11 +1,10 @@
 import React from 'react';
-import { I18nextProvider, Trans } from "react-i18next";
+import { I18nextProvider } from "react-i18next";
 import i18n from "./i18n";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 import MainPanel from './components/main-panel';
 import Setup from './components/setup';

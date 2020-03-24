@@ -1,6 +1,11 @@
+![DSPLAY - Digital Signage](https://developers.dsplay.tv/assets/images/dsplay-logo.png)
+
 # COVID-19 Panel for Digital Signage
 
 This project renders a DigitalSignage-ready Panel with COVID-19 data. The panel is responvive (works from 360p to 4k resolutions) and fullscreen without scrolling.
+
+![Screenshot](docs/screenshot-01.png)
+![Screenshot](docs/screenshot-02.png)
 
 ## Live URLs
 

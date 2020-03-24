@@ -1,25 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { I18nextProvider, Trans } from "react-i18next";
+import i18n from "./i18n";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import MainPanel from './components/main-panel';
+import Setup from './components/setup';
+import './App.sass';
+import { screenFormat } from './util/screen';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <I18nextProvider i18n={i18n}>
+        <div className={`App ${screenFormat}`}>
+          <Switch>
+            <Route path="/setup">
+              <Setup />
+            </Route>
+            <Route path="/">
+              <MainPanel />
+            </Route>
+          </Switch>
+        </div>
+      </I18nextProvider>
+    </Router>
   );
 }
 

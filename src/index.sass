@@ -1,0 +1,368 @@
+html
+  height: 100%
+  width: 100%
+  
+body
+  height: 100%
+  width: 100%
+  margin: 0
+  font-family: 'Roboto', sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+
+code
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace
+
+
+#root
+  height: 100%
+  width: 100%
+
+*
+  box-sizing: border-box
+
+.full-height
+  height: 100%
+
+.App
+  text-align: center
+  height: 100%
+  width: 100%
+  display: block
+
+  .main-panel
+    // background-color: black
+    display: block
+    height: 100%
+    padding: 0em
+    background-image: url('bg.jpg')
+    background-size: cover
+    overflow: hidden
+
+    .country
+      // background-color: green
+      display: block
+      height: 97%
+      // color: white
+
+      .title
+        // background-color: purple
+        // background-color: rgba(255, 255, 255, .9)
+        position: relative
+        display: flex
+        justify-content: center
+        align-items: center
+        font-size: 2em
+        padding: 1em
+        height: 12%
+        span.country-title
+          display: inline-block
+          background-color: rgba(255, 255, 255, .8)
+          padding: 0 1em
+          min-width: 18.5em
+          border-radius: .5em
+        span.covid
+          position: absolute
+          font-weight: 100
+          color: white
+          left: .5em
+
+
+      .detail
+        display: block
+        height: 88%
+
+        .country-summary
+          // background-color: red
+          display: inline-flex
+          vertical-align: top
+          width: 25%
+          height: 100%
+          box-sizing: border-box
+          flex-direction: column
+          justify-content: space-between
+          padding: 0 1em .8em
+
+          .row
+            background-color: rgba(255, 255, 255, .8)
+            border-radius: 1em
+            display: inline-flex
+            flex-direction: column
+            justify-content: center
+            padding: 0 1em
+            .label
+              font-size: 1.2em
+              margin-top: 1em
+
+            .value
+              font-weight: bold
+              font-size: 4em
+
+            &.confirmed
+              .value
+                color: dodgerblue
+
+            &.deaths
+              .value
+                color: red
+
+            &.recovered
+              .value
+                color: teal
+
+        .country-chart-container
+          // background-color: orange
+          display: inline-block
+          vertical-align: top
+          width: 75%
+          height: 100%
+          // display: flex
+          .confirmed
+            // background-color: blue
+            // display: inline-block
+            vertical-align: top
+            height: 60%
+            width: 100%
+
+          .deaths
+            // background-color: red
+            display: inline-block
+            vertical-align: top
+            height: 40%
+            width: 48%
+            margin-right: .5%
+
+          .recovered
+            // background-color: green
+            display: inline-block
+            vertical-align: top
+            height: 40%
+            width: 48%
+            margin-left: .5%
+          
+          .countries-chart
+            display: inline-block
+            // margin: auto 0
+            height: 95%
+            width: 95%
+            // vertical-align: middle
+            border-radius: 1em
+            background-color: rgba(255, 255, 255, .8)
+    .credits
+      // background-color: lightblue
+      // background-color: rgba(255, 255, 255, .4)
+      height: 3%
+      display: flex
+      justify-content: center
+      align-items: center
+      font-size: .7em
+      
+      a
+        text-decoration: none
+        color: white
+.landscape
+
+  &.App
+    .country-summary
+      .row
+        min-height: 22%
+  @media screen and (max-width: 640px) and (max-height: 360px)
+    &.App
+      font-size: .3em
+
+  @media screen and (min-width: 640px) and (min-height: 360px)
+    &.App
+      font-size: .5em
+  
+  @media screen and (min-width: 1280px) and (min-height: 720px)
+    &.App
+      font-size: 1em
+
+  @media screen and (min-width: 1920px) and (min-height: 1080px)
+    &.App
+      font-size: 1.5em
+
+  @media screen and (min-width: 2560px) and (min-height: 1440px)
+    &.App
+      font-size: 2em
+
+  @media screen and (min-width: 3840px) and (min-height: 2160px)
+    &.App
+      font-size: 3em
+
+
+
+.portrait
+
+  @media screen and (max-width: 360px) and (max-height: 640px)
+    &.App
+      font-size: .4em
+
+  @media screen and (min-width: 360px) and (min-height: 640px)
+    &.App
+      font-size: .5em
+  
+  @media screen and (min-width: 720px) and (min-height: 1280px)
+    &.App
+      font-size: 1em
+
+  @media screen and (min-width: 1080px) and (min-height: 1920px)
+    &.App
+      font-size: 1.5em
+
+  @media screen and (min-width: 1440px) and (min-height: 2560px)
+    &.App
+      font-size: 2em
+
+  @media screen and (min-width: 2160px) and (min-height: 3840px)
+    &.App
+      font-size: 3em
+ 
+
+  &.App
+
+  .main-panel
+
+    .country
+      display: block
+      height: 97%
+
+      .title
+        display: flex
+        justify-content: center
+        align-items: center
+        font-size: 2em
+        padding: 1em 1em 0
+        height: 12%
+        span.country-title
+          border-radius: .4em
+        span.covid
+          position: absolute
+          font-weight: 100
+          color: white
+          top: .2em
+          left: auto
+
+      .detail
+        display: block
+        height: 88%
+
+        .country-summary
+          width: 100%
+          height: 35%
+          justify-content: space-around
+          flex-direction: row
+          flex-wrap: wrap
+
+          .row
+            min-width: 40%
+            margin-bottom: 1em
+            .label
+              margin-top: 1em
+
+            .value
+              font-weight: bold
+              font-size: 4em
+
+        .country-chart-container
+          width: 100%
+          height: 65%
+
+          .confirmed
+            // background-color: blue
+            // display: inline-block
+            vertical-align: top
+            height: 60%
+            width: 100%
+
+          .deaths
+            // background-color: red
+            display: inline-block
+            vertical-align: top
+            width: 45%
+            margin-left: 5%
+            margin-right: -5%
+
+          .recovered
+            // background-color: green
+            display: inline-block
+            vertical-align: top
+            width: 48%
+            // margin-left: -5%
+            margin-right: 5%
+
+          .countries-chart
+            width: 80%
+
+  .credits
+    height: 3%
+
+.App
+  .setup
+    .line-bg
+      height: 7px
+      width: 100%
+      display: block
+      background: url(./images/line.jpg) repeat-x
+
+    header
+      display: flex
+      justify-content: center
+      align-items: center
+      font-size: 1.3em
+      font-weight: 100
+
+    .content
+      padding: 1em
+
+    .duration
+      text-align: right
+      font-size: 1.3em
+      width: 4em
+
+    .tip
+      color: #888
+      font-size: .8em
+      font-weight: 100
+
+    button
+      margin: .5em .5em
+      padding: 0 1em
+      // border-radius: .2em
+
+    code
+      display: flex
+      word-break: break-word
+      padding: 1em
+      font-size: 1.1em
+      justify-content: center
+      background-color: #222
+      color: white
+
+    fieldset
+      margin-top: 1em
+      border: 1px solid #CCC
+      border-radius: .5em
+
+    .countries
+      display: flex
+      flex-wrap: wrap
+      max-height: 28em
+      overflow-y: scroll
+
+      .country-check
+        display: inline-flex
+        padding: 0 1em
+        min-width: 20em
+        align-items: center
+
+        input
+          width: 1.5em
+          height: 1.5em
+          padding: 0
+          margin: .2em
+          border: none
+        label
+          span.country-title
+            font-size: 1em
+        

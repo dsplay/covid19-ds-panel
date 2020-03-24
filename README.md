@@ -9,9 +9,9 @@ This project renders a DigitalSignage-ready Panel with COVID-19 data. The panel 
 
 ## How to Use
 
-Just copy & paste the panel URL in your Digital Signage software, or even in a web browser.
+Just copy & paste the panel URL into your Digital Signage software, or even in a web browser.
 
-> If you don't have a Digital Signage software consider using [DSPLAY - Digital Signage](https://dsplay.tv)
+> If you don't have a Digital Signage software, consider using [DSPLAY - Digital Signage](https://dsplay.tv)
 
 ### Global Panel
 
@@ -30,12 +30,9 @@ it will give you a URL like the following (ex: a panel for Global, China and Por
 https://covid19.dsplay.tv?countries=Global%2CChina%2CPortugal&duration=15
 
 
-## Data source
+## References
 
 This project uses data from https://github.com/pomber/covid19
 
-
-
-
-> This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

@@ -43,13 +43,13 @@ export async function loadSeries() {
 
     seriesData = {};
 
-    Object.keys(raw).forEach((key) => {
+    Object.keys(raw).forEach((country) => {
 
       let lastValidConfirmed = 0;
       let lastValidDeaths = 0;
       let lastValidRecovered = 0;
 
-      seriesData[key] = raw[key].map(({
+      seriesData[country] = raw[country].map(({
         date,
         confirmed = 0,
         deaths = 0,

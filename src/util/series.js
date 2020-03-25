@@ -50,7 +50,7 @@ export async function loadSeries() {
       let lastValidRecovered = 0;
 
       seriesData[key] = raw[key].map(({
-        date = 0,
+        date,
         confirmed = 0,
         deaths = 0,
         recovered = 0,

@@ -3,6 +3,8 @@ import moment from 'moment';
 
 const DATA_URL = 'https://pomber.github.io/covid19/timeseries.json';
 const KEY = 'series';
+const VERSION_KEY = 'version';
+const VERSION = 3;
 
 export async function loadSeries() {
   let seriesData;
@@ -12,6 +14,7 @@ export async function loadSeries() {
 
     const cache = localStorage.getItem(KEY);
     seriesData = cache && JSON.parse(cache);
+    const storedVersion = localStorage.getItem(VERSION_KEY);
 
     if (seriesData) {
       const keys = Object.keys(seriesData);
@@ -26,7 +29,7 @@ export async function loadSeries() {
 
       const diff = today.diff(last, 'days');
 
-      recent = diff < 2;
+      recent = diff < 2 && +storedVersion === VERSION;
     }
 
   } catch (e) {
@@ -41,10 +44,32 @@ export async function loadSeries() {
     seriesData = {};
 
     Object.keys(raw).forEach((key) => {
-      seriesData[key] = raw[key];
+
+      let lastValidConfirmed = 0;
+      let lastValidDeaths = 0;
+      let lastValidRecovered = 0;
+
+      seriesData[key] = raw[key].map(({
+        date = 0,
+        confirmed = 0,
+        deaths = 0,
+        recovered = 0,
+      }) => {
+        lastValidConfirmed = confirmed || lastValidConfirmed;
+        lastValidDeaths = deaths || lastValidDeaths;
+        lastValidRecovered = recovered || lastValidRecovered;
+
+        return ({
+          date,
+          confirmed: lastValidConfirmed,
+          deaths: lastValidDeaths,
+          recovered: lastValidRecovered,
+        });
+      });
     });
 
     localStorage.setItem(KEY, JSON.stringify(seriesData));
+    localStorage.setItem(VERSION_KEY, VERSION.toString());
   }
 
   return seriesData;

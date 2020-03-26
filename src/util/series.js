@@ -4,7 +4,7 @@ import moment from 'moment';
 const DATA_URL = 'https://pomber.github.io/covid19/timeseries.json';
 const KEY = 'series';
 const VERSION_KEY = 'version';
-const VERSION = 3;
+const VERSION = 4;
 
 export async function loadSeries() {
   let seriesData;

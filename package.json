@@ -10,6 +10,7 @@
     "axios": "^0.19.2",
     "i18next": "^19.3.3",
     "i18next-browser-languagedetector": "^4.0.2",
+    "jquery": "^3.4.1",
     "moment": "^2.24.0",
     "query-string": "^6.11.1",
     "react": "^16.13.1",

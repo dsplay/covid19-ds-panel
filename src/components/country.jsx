@@ -3,6 +3,7 @@ import CountriesChart from './countries-chart';
 import countries from '../data/countries.json';
 import { useTranslation } from "react-i18next";
 import { GLOBAL } from '../util/consts';
+import { numberFormat } from '../i18n';
 
 
 function Country({
@@ -67,19 +68,19 @@ function Country({
         <div className="country-summary">
           <div className="row new">
             <div className="label"><span role="img" aria-label={t('New Cases')}>🔥</span> {t('New Cases')} <span role="img" aria-label={t('New Cases')}>🤧</span></div>
-            <div className="value">{newCases}</div>
+            <div className="value">{numberFormat.format(newCases)}</div>
           </div>
           <div className="row confirmed">
             <div className="label"><span role="img" aria-label={t('Confirmed Cases')}>🤒</span> {t('Confirmed Cases')} <span role="img" aria-label={t('Confirmed Cases')}>😷</span></div>
-            <div className="value">{confirmed}</div>
+            <div className="value">{numberFormat.format(confirmed)}</div>
           </div>
           <div className="row deaths">
             <div className="label"><span role="img" aria-label={t('Deaths')}>😢</span> {t('Deaths')} <span role="img" aria-label={t('Deaths')}>😞</span></div>
-            <div className="value">{deaths}</div>
+            <div className="value">{numberFormat.format(deaths)}</div>
           </div>
           <div className="row recovered">
             <div className="label"><span role="img" aria-label={t('Recovered')}>🕺</span> {t('Recovered')} <span role="img" aria-label={t('Recovered')}>💃</span> </div>
-            <div className="value">{recovered}</div>
+            <div className="value">{numberFormat.format(recovered)}</div>
           </div>
         </div>
 

@@ -64,10 +64,10 @@ function MainPanel() {
           recovered: 0,
         };
         allCountries.forEach((country) => {
-          day.confirmed += series[country][i].confirmed || 0;
-          day.deaths += series[country][i].deaths || 0;
-          day.recovered += series[country][i].recovered || 0;
-          day.date = series[country][i].date;
+          day.confirmed += series[country][i] && series[country][i].confirmed || 0;
+          day.deaths += series[country][i] && series[country][i].deaths || 0;
+          day.recovered += series[country][i] && series[country][i].recovered || 0;
+          day.date = day.date || series[country][i].date;
         });
         result.push(day);
       }

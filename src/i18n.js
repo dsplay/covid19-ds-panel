@@ -1,5 +1,8 @@
-import i18n from "i18next";
+import i18n from 'i18next';
 import LanguageDetector from "i18next-browser-languagedetector";
+
+export let numberFormat;
+const FALLBACK = 'en';
 
 i18n
   .use(LanguageDetector)
@@ -13,7 +16,7 @@ i18n
           'Deaths': 'Deaths',
           'Recovered': 'Recovered',
           'Global': 'Global',
-        }
+        },
       },
       es: {
         translations: {
@@ -34,7 +37,7 @@ i18n
           'Deaths': 'Muertes',
           'Recovered': 'Recuperados',
           'Global': 'Global',
-        }
+        },
       },
       de: {
         translations: {
@@ -43,7 +46,7 @@ i18n
           'Deaths': 'Todesfälle',
           'Recovered': 'Wiederhergestellt',
           'Global': 'Global',
-        }
+        },
       },
       nl: {
         translations: {
@@ -52,9 +55,9 @@ i18n
           'Deaths': 'Sterfgevallen',
           'Recovered': 'Hersteld',
           'Global': 'Globaal',
-        }
+        },
       },
-      'pt': {
+      pt: {
         translations: {
           'Loading': 'Carregando',
           'Panel Setup': 'Configurações',
@@ -72,10 +75,10 @@ i18n
           'Deaths': 'Mortes',
           'Recovered': 'Recuperados',
           'Global': 'Global',
-        }
+        },
       },
     },
-    fallbackLng: "en",
+    fallbackLng: FALLBACK,
     debug: true,
 
     // have a common namespace used around the full app
@@ -86,12 +89,14 @@ i18n
 
     interpolation: {
       escapeValue: false, // not needed for react!!
-      formatSeparator: ","
+      formatSeparator: ",",
     },
 
     react: {
       wait: true
-    }
+    },
+  }, () => {
+    numberFormat = new Intl.NumberFormat(i18n.language || FALLBACK);
   });
 
 export default i18n;

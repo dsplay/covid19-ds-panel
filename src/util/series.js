@@ -8,13 +8,14 @@ const DATA_URL = 'https://pomber.github.io/covid19/timeseries.json';
 const KEY_SERIES = 'series';
 const KEY_VERSION = 'version';
 const KEY_UPDATED = 'updated';
-const VERSION = '1.4';
+const VERSION = '1.5';
 const TODAYS_DATA_URL = 'https://www.worldometers.info/coronavirus/';
-const FLAG_ADD_TODAY = false;
+const FLAG_ADD_TODAY = true;
 
 
 
 async function getTodaysData() {
+  console.log('fetching today\'s data...');
   const response = await axios.get(`${CORS_PROXY}/${TODAYS_DATA_URL}`);
 
   const container = $('<div></div>');
@@ -31,8 +32,6 @@ async function getTodaysData() {
       recovered: +$(countryEl).find('td:nth-child(6)').text().replace(',', ''),
     }
   });
-
-  console.log(countries);
 
   return countries;
 }
@@ -57,10 +56,9 @@ export async function loadSeries() {
 
       const now = moment().utc();
       const lastDay = moment(lastDate, 'YYYY-M-D').utc();
-      console.log('last day:', lastDay);
 
       const diff = now.diff(moment(lastUpdate).utc(), 'hours');
-      console.log(`${diff} hours since last update.`)
+      console.log(`${diff} hours since last update.`);
 
       recent = lastUpdate && (diff <= 3) && storedVersion === VERSION;
     }
@@ -70,7 +68,7 @@ export async function loadSeries() {
   }
 
   if (!seriesData || !recent) {
-    console.log('fetching...');
+    console.log('fetching series...');
     const response = await axios.get(DATA_URL);
     const raw = response.data;
 
@@ -108,8 +106,6 @@ export async function loadSeries() {
             console.log('Today\'s data not found for country:', country);
           }
         });
-
-        console.log('augmented', raw);
       } catch (e) {
         console.log('error getting today\'s info:', e);
       }
@@ -147,7 +143,7 @@ export async function loadSeries() {
     localStorage.setItem(KEY_UPDATED, moment().utc().toISOString());
   }
 
-  console.log(seriesData);
+  // console.log(seriesData);
 
   return seriesData;
 }

@@ -8,7 +8,7 @@ const DATA_URL = 'https://pomber.github.io/covid19/timeseries.json';
 const KEY_SERIES = 'series';
 const KEY_VERSION = 'version';
 const KEY_UPDATED = 'updated';
-const VERSION = '1.6';
+const VERSION = '1.7';
 const TODAYS_DATA_URL = 'https://www.worldometers.info/coronavirus/';
 const FLAG_ADD_TODAY = true;
 

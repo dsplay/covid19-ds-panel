@@ -3,7 +3,7 @@ const namesMap = {
   'Congo': 'Congo (Brazzaville)',
   'S. Korea': 'Korea, South',
   'Taiwan': 'Taiwan*',
-  'United Kingdom': 'UK',
+  'UK': 'United Kingdom',
 };
 
 export const mapName = (name) => namesMap[name] || name;

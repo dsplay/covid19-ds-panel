@@ -8,7 +8,7 @@ const DATA_URL = 'https://pomber.github.io/covid19/timeseries.json';
 const KEY_SERIES = 'series';
 const KEY_VERSION = 'version';
 const KEY_UPDATED = 'updated';
-const VERSION = '1.5';
+const VERSION = '1.6';
 const TODAYS_DATA_URL = 'https://www.worldometers.info/coronavirus/';
 const FLAG_ADD_TODAY = true;
 
@@ -33,6 +33,8 @@ async function getTodaysData() {
     }
   });
 
+  console.log(countries);
+
   return countries;
 }
 
@@ -48,19 +50,10 @@ export async function loadSeries() {
     const lastUpdate = localStorage.getItem(KEY_UPDATED);
 
     if (seriesData) {
-      const keys = Object.keys(seriesData);
-      const firstKey = keys[0];
-      // console.log(keys);
-      const { date: lastDate } = seriesData[firstKey][seriesData[firstKey].length - 1];
-      // console.log(lastDate);
-
       const now = moment().utc();
-      const lastDay = moment(lastDate, 'YYYY-M-D').utc();
-
       const diff = now.diff(moment(lastUpdate).utc(), 'hours');
       console.log(`${diff} hours since last update.`);
-
-      recent = lastUpdate && (diff <= 3) && storedVersion === VERSION;
+      recent = lastUpdate && (diff < 3) && storedVersion === VERSION;
     }
 
   } catch (e) {

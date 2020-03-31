@@ -5,7 +5,10 @@ export const BANNER_V = 'banner-v';
 export const SQUARED = 'squared';
 
 export let screenFormat = LANDSCAPE;
-export let w, h;
+let w, h;
+
+export const getWidth = () => w;
+export const getHeight = () => h;
 
 const BANNER_FACTOR = 4;
 const SQUARED_FACTOR = .2;

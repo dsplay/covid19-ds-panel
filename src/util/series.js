@@ -8,7 +8,7 @@ const DATA_URL = 'https://pomber.github.io/covid19/timeseries.json';
 const KEY_SERIES = 'series';
 const KEY_VERSION = 'version';
 const KEY_UPDATED = 'updated';
-const VERSION = '1.7';
+const VERSION = '1.8';
 const TODAYS_DATA_URL = 'https://www.worldometers.info/coronavirus/';
 const FLAG_ADD_TODAY = true;
 
@@ -24,12 +24,12 @@ async function getTodaysData() {
   const countriesHTML = container.find('#main_table_countries_today tbody tr');
   const countries = {};
   countriesHTML.each((i, countryEl) => {
-    const name = mapName($(countryEl).find('td:nth-child(1)').text().trim());
+    const name = mapName($(countryEl).find('td:nth-child(2)').text().trim());
     countries[name] = {
       date: moment().utc().startOf('day').format('YYYY-M-D'),
-      confirmed: +$(countryEl).find('td:nth-child(2)').text().replace(',', ''),
-      deaths: +$(countryEl).find('td:nth-child(4)').text().replace(',', ''),
-      recovered: +$(countryEl).find('td:nth-child(6)').text().replace(',', ''),
+      confirmed: +$(countryEl).find('td:nth-child(3)').text().replace(',', ''),
+      deaths: +$(countryEl).find('td:nth-child(5)').text().replace(',', ''),
+      recovered: +$(countryEl).find('td:nth-child(7)').text().replace(',', ''),
     }
   });
 

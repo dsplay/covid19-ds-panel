@@ -21,7 +21,13 @@ function Country({
   } = lastest;
 
   const { confirmed: confirmedYesterday } = yesterday;
-  const newCases = confirmed - confirmedYesterday;
+  let newCases = confirmed - confirmedYesterday;
+
+  if (newCases === 0) {
+    const beforeYesterday = series[series.length - 3];
+    const { confirmed: confirmedBeforeYesterday } = beforeYesterday;
+    newCases = confirmed - confirmedBeforeYesterday;
+  }
 
   const startIdx = series.findIndex(({
     confirmed,

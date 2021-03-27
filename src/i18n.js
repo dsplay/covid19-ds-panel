@@ -96,7 +96,8 @@ i18n
       wait: true
     },
   }, () => {
-    numberFormat = new Intl.NumberFormat(i18n.language || FALLBACK);
+    const [language] = i18n.language.split('_');
+    numberFormat = new Intl.NumberFormat(language || FALLBACK);
   });
 
 export default i18n;

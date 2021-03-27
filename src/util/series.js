@@ -1,14 +1,16 @@
 import axios from 'axios';
 import moment from 'moment';
 import $ from 'jquery';
+import { compressToUTF16, decompressFromUTF16 } from 'lz-string';
 import { mapName } from './country';
 
-const CORS_PROXY = 'https://cors-anywhere.herokuapp.com';
+// const CORS_PROXY = 'https://cors-anywhere.herokuapp.com';
+const CORS_PROXY = 'https://api.allorigins.win/get';
 const DATA_URL = 'https://pomber.github.io/covid19/timeseries.json';
 const KEY_SERIES = 'series';
 const KEY_VERSION = 'version';
 const KEY_UPDATED = 'updated';
-const VERSION = '1.8';
+const VERSION = '2.0';
 const TODAYS_DATA_URL = 'https://www.worldometers.info/coronavirus/';
 const FLAG_ADD_TODAY = true;
 
@@ -16,10 +18,15 @@ const FLAG_ADD_TODAY = true;
 
 async function getTodaysData() {
   console.log('fetching today\'s data...');
-  const response = await axios.get(`${CORS_PROXY}/${TODAYS_DATA_URL}`);
+  // const response = await axios.get(`${CORS_PROXY}/${TODAYS_DATA_URL}`);
+  const response = await axios.get(CORS_PROXY, {
+    params: {
+      url: TODAYS_DATA_URL,
+    },
+  });
 
   const container = $('<div></div>');
-  container.html(response.data);
+  container.html(response.data.contents);
 
   const countriesHTML = container.find('#main_table_countries_today tbody tr');
   const countries = {};
@@ -45,7 +52,7 @@ export async function loadSeries() {
   try {
 
     const cache = localStorage.getItem(KEY_SERIES);
-    seriesData = cache && JSON.parse(cache);
+    seriesData = cache && JSON.parse(decompressFromUTF16(cache));
     const storedVersion = localStorage.getItem(KEY_VERSION);
     const lastUpdate = localStorage.getItem(KEY_UPDATED);
 
@@ -64,12 +71,11 @@ export async function loadSeries() {
     console.log('fetching series...');
     const response = await axios.get(DATA_URL);
     const raw = response.data;
-
+    const today = moment().utc().startOf('day').format('YYYY-M-D');
     // add todays info
     if (FLAG_ADD_TODAY) {
       try {
         const todaysData = await getTodaysData();
-        const today = moment().utc().startOf('day').format('YYYY-M-D');
         Object.keys(raw).forEach((country) => {
           const last = raw[country][raw[country].length - 1];
           const lastDate = last.date;
@@ -112,26 +118,31 @@ export async function loadSeries() {
       let lastValidDeaths = 0;
       let lastValidRecovered = 0;
 
-      seriesData[country] = raw[country].map(({
-        date,
-        confirmed = 0,
-        deaths = 0,
-        recovered = 0,
-      }) => {
-        lastValidConfirmed = confirmed || lastValidConfirmed;
-        lastValidDeaths = deaths || lastValidDeaths;
-        lastValidRecovered = recovered || lastValidRecovered;
-
-        return ({
+      seriesData[country] = raw[country]
+        // .filter(({ date: dateString }) => {
+        //   const date = moment(dateString);
+        //   return date.diff(today, 'months') >= -6;
+        // })
+        .map(({
           date,
-          confirmed: lastValidConfirmed,
-          deaths: lastValidDeaths,
-          recovered: lastValidRecovered,
+          confirmed = 0,
+          deaths = 0,
+          recovered = 0,
+        }) => {
+          lastValidConfirmed = confirmed || lastValidConfirmed;
+          lastValidDeaths = deaths || lastValidDeaths;
+          lastValidRecovered = recovered || lastValidRecovered;
+
+          return ({
+            date,
+            confirmed: lastValidConfirmed,
+            deaths: lastValidDeaths,
+            recovered: lastValidRecovered,
+          });
         });
-      });
     });
 
-    localStorage.setItem(KEY_SERIES, JSON.stringify(seriesData));
+    localStorage.setItem(KEY_SERIES, compressToUTF16(JSON.stringify(seriesData)));
     localStorage.setItem(KEY_VERSION, VERSION.toString());
     localStorage.setItem(KEY_UPDATED, moment().utc().toISOString());
   }

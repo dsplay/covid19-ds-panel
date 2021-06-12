@@ -36,3 +36,7 @@ This project uses data from https://github.com/pomber/covid19
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Build status
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/2f2c0654-bab1-4b85-bcd4-8fbfd613d463/deploy-status)](https://app.netlify.com/sites/dsplay-covid19/deploys)
+

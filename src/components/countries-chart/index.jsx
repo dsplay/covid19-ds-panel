@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { screenFormat, PORTRAIT, LANDSCAPE, SQUARED, getWidth, getHeight } from '../util/screen';
+import { screenFormat, PORTRAIT, LANDSCAPE, SQUARED, getWidth, getHeight } from '../../util/screen';
 import { ResponsiveLine } from '@nivo/line';
 
 const w = getWidth();

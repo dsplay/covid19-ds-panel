@@ -1,0 +1,108 @@
+.country
+    // background-color: green
+    display: block
+    height: 97%
+    // color: white
+
+.title
+    // background-color: purple
+    // background-color: rgba(255, 255, 255, .9)
+    position: relative
+    display: flex
+    justify-content: center
+    align-items: center
+    font-size: 2em
+    padding: 1em
+    height: 12%
+    span.country-title
+      display: inline-block
+      background-color: rgba(255, 255, 255, .8)
+      padding: 0 1em
+      min-width: 18.5em
+      border-radius: .5em
+    span.covid
+      position: absolute
+      font-weight: 100
+      color: white
+      left: .5em
+
+.detail
+        display: block
+        height: 88%
+
+        .country-summary
+          // background-color: red
+          display: inline-flex
+          vertical-align: top
+          width: 30%
+          height: 100%
+          box-sizing: border-box
+          flex-direction: column
+          justify-content: space-between
+          padding: 0 1em .8em
+
+          .row
+            background-color: rgba(255, 255, 255, .8)
+            border-radius: 1em
+            display: inline-flex
+            flex-direction: column
+            justify-content: center
+            padding: 0 1em
+            .label
+              font-size: 1.2em
+              margin-top: 1em
+
+            .value
+              font-weight: bold
+              font-size: 4em
+
+            &.confirmed
+              .value
+                color: dodgerblue
+
+            &.deaths
+              .value
+                color: red
+
+            &.recovered
+              .value
+                color: teal
+
+        .country-chart-container
+          // background-color: orange
+          display: inline-block
+          vertical-align: top
+          width: 70%
+          height: 100%
+          // display: flex
+          .confirmed
+            // background-color: blue
+            // display: inline-block
+            vertical-align: top
+            height: 60%
+            width: 100%
+
+          .deaths
+            // background-color: red
+            display: inline-block
+            vertical-align: top
+            height: 40%
+            width: 48%
+            margin-right: .5%
+
+          .recovered
+            // background-color: green
+            display: inline-block
+            vertical-align: top
+            height: 40%
+            width: 48%
+            margin-left: .5%
+          
+          .countries-chart
+            display: inline-block
+            // margin: auto 0
+            height: 95%
+            width: 95%
+            // vertical-align: middle
+            border-radius: 1em
+            background-color: rgba(255, 255, 255, .8)

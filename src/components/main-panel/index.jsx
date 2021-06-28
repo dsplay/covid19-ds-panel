@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import Country from './country';
-import { useInterval } from '../util/use-interval';
-import { loadSeries } from '../util/series';
+import Country from '../country';
+import { useInterval } from '../../util/use-interval';
+import { loadSeries } from '../../util/series';
 import { useTranslation } from 'react-i18next';
 
 const url = new URL(window.location.href);

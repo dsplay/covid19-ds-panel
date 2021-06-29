@@ -4,6 +4,8 @@ import { useInterval } from '../../util/use-interval';
 import { loadSeries } from '../../util/series';
 import { useTranslation } from 'react-i18next';
 
+import './style.sass'
+
 const url = new URL(window.location.href);
 
 function MainPanel() {

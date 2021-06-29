@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { GLOBAL } from '../../util/consts';
 import { numberFormat } from '../../i18n';
 
-import "./style.sass";
+import './style.sass';
 
 function Country({
   country = GLOBAL,

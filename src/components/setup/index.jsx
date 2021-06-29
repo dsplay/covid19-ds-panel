@@ -5,7 +5,7 @@ import { loadSeries } from '../../util/series';
 import countries from '../../data/countries.json';
 import { GLOBAL } from '../../util/consts';
 
-import "./style.sass";
+import  './style.sass';
 import logo from '../../images/dsplay-logo.png';
 
 

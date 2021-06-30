@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import Country from '../country';
 import { useInterval } from '../../util/use-interval';
 import { loadSeries } from '../../util/series';
-import { useTranslation } from 'react-i18next';
+import Loader from '../loader';
 
 import './style.sass'
 
@@ -40,7 +41,14 @@ function MainPanel() {
 
   useEffect(() => {
     (async () => {
-      const seriesData = await loadSeries();
+      const wait = (delay) => new Promise((resolve) => {
+        setTimeout(resolve, delay);
+      });
+      const [seriesData] = await Promise.all([
+        loadSeries(),
+        wait(1000),
+      ]);
+
       setSeries(seriesData);
       setLoading(false);
     })();
@@ -80,7 +88,7 @@ function MainPanel() {
 
   if (loading) {
     return (
-      <div>{t('Loading')}...</div>
+      <Loader>{t('Loading')}...</Loader>
     );
   }
 

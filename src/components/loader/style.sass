@@ -1,0 +1,26 @@
+.loader
+  width: 100%
+  height: 100%
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  font-weight: bold
+
+  .logo
+    height: 4rem
+    margin-bottom: .5rem
+
+.bounce
+  animation-name: bounce
+  animation-timing-function: ease
+  animation-duration: 2s
+  animation-iteration-count: infinite
+
+@keyframes bounce
+  0%
+    transform: scale(1)
+  50%
+    transform: scale(1.1)
+  100%
+    transform: scale(1)

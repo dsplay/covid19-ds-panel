@@ -5,6 +5,8 @@ import { useTranslation } from "react-i18next";
 import { GLOBAL } from '../../util/consts';
 import { numberFormat } from '../../i18n';
 
+import logo from '../../images/covid-cases-logo.png';
+
 import './style.sass';
 
 function Country({
@@ -68,7 +70,10 @@ function Country({
       <div className="title">
         {country !== GLOBAL && <span className="country-title">{countries[country] ? countries[country].flag : '🇧🇱'} {country}</span>}
         {country === GLOBAL && <span className="country-title"><span role="img" aria-label={t(GLOBAL)}>🌎</span> {t(GLOBAL)}</span>}
-        <span className="covid">COVID-19</span>
+        <span className="covid">
+          <img className="icon" alt="COVID-19" src={logo} />
+          COVID-19
+        </span>
       </div>
 
       <div className="detail">

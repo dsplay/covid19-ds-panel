@@ -13,11 +13,17 @@ Just copy & paste the panel URL into your Digital Signage software, or even in a
 
 > If you don't have a Digital Signage software, consider using [DSPLAY - Digital Signage](https://dsplay.tv)
 
+### Local Panel (Auto detect user country)
+
+For auto-detecting your country and showing local panel just use:
+
+https://covid19.dsplay.tv
+
 ### Global Panel
 
 For showing Global panel just use:
 
-https://covid19.dsplay.tv/
+https://covid19.dsplay.tv?countries=Global
 
 ### Country/Place specific Panel
 

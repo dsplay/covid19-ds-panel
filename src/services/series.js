@@ -2,7 +2,7 @@ import axios from 'axios';
 import moment from 'moment';
 import $ from 'jquery';
 import { compressToUTF16, decompressFromUTF16 } from 'lz-string';
-import { mapName } from './country';
+import { mapName } from '../util/country';
 
 // const CORS_PROXY = 'https://cors-anywhere.herokuapp.com';
 const CORS_PROXY = 'https://api.allorigins.win/get';

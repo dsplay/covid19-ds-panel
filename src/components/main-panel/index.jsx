@@ -2,10 +2,11 @@ import React, { useEffect, useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import Country from '../country';
 import { useInterval } from '../../util/use-interval';
-import { loadSeries } from '../../util/series';
+import { loadSeries } from '../../services/series';
 import Loader from '../loader';
 
 import './style.sass'
+import { detectUserLocation } from '../../services/location';
 
 const url = new URL(window.location.href);
 
@@ -21,21 +22,29 @@ function MainPanel() {
 
   useEffect(() => {
     if (series) {
-      const url = new URL(window.location.href);
-      const routeCountries = url.searchParams.get('countries');
-      const routeDuration = url.searchParams.get('duration');
+      (async () => {
+        const url = new URL(window.location.href);
+        const routeCountries = url.searchParams.get('countries');
+        const routeDuration = url.searchParams.get('duration');
 
-      if (routeCountries) {
         const valid = [
           ...Object.keys(series),
           'Global',
         ];
-        setCountries(routeCountries.split(',').map((country) => country.trim()).filter((country) => valid.includes(country)));
-      }
+        if (routeCountries) {
+          setCountries(routeCountries.split(',').map((country) => country.trim()).filter((country) => valid.includes(country)));
+        } else {
+          const location = await detectUserLocation();
+          if (valid.includes(location)) {
+            setCountries([location]);
+          }
+        }
 
-      if (routeDuration && !isNaN(+routeDuration)) {
-        setPageTime(+routeDuration * 1000);
-      }
+        if (routeDuration && !isNaN(+routeDuration)) {
+          setPageTime(+routeDuration * 1000);
+        }
+        setLoading(false);
+      })();
     }
   }, [series]);
 
@@ -50,7 +59,6 @@ function MainPanel() {
       ]);
 
       setSeries(seriesData);
-      setLoading(false);
     })();
   }, []);
 

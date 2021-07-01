@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import qs from 'query-string';
 import { useTranslation } from "react-i18next";
-import { loadSeries } from '../../util/series';
+import { loadSeries } from '../../services/series';
 import countries from '../../data/countries.json';
 import { GLOBAL } from '../../util/consts';
 
-import  './style.sass';
 import logo from '../../images/dsplay-logo.png';
+import  './style.sass';
 
 
 function CountryOption({
